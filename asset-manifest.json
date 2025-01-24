@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/IAA/static/css/main.27df2f4c.css",
-    "main.js": "/IAA/static/js/main.9437feb2.js",
+    "main.js": "/IAA/static/js/main.5722ed35.js",
     "index.html": "/IAA/index.html",
     "main.27df2f4c.css.map": "/IAA/static/css/main.27df2f4c.css.map",
-    "main.9437feb2.js.map": "/IAA/static/js/main.9437feb2.js.map"
+    "main.5722ed35.js.map": "/IAA/static/js/main.5722ed35.js.map"
   },
   "entrypoints": [
     "static/css/main.27df2f4c.css",
-    "static/js/main.9437feb2.js"
+    "static/js/main.5722ed35.js"
   ]
 }
