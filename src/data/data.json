@@ -1,7 +1,7 @@
 {
   "Header": {
-    "title": "We are a Landing Page",
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+    "title": "Welcome to Instant Auto Appraisals",
+    "paragraph": "Get your Classic Car Appraisals Done Instantly through us! For the low cost of $200CAD, you can have your insurance appraisal sent right to your email in minutes without ever leaving the driveway!"
   },
   "About": {
     "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -21,8 +21,8 @@
   "Gallery": [
     {
       "title": "Project Title",
-      "largeImage": "img/portfolio/01-large.jpg",
-      "smallImage": "img/portfolio/01-small.jpg"
+      "largeImage": "img/portfolio/01-lage.jpg",
+      "smallImage": "img/portfolio/01-sall.jpg"
     },
     {
       "title": "Project Title",

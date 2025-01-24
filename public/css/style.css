@@ -82,7 +82,7 @@ hr {
 }
 #menu a.navbar-brand {
   font-family: "Raleway", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #333;
   text-transform: uppercase;
@@ -206,9 +206,9 @@ a:focus,
 /* Header Section */
 .intro {
   display: table;
-  width: 100%;
+  width: 100%; 
   padding: 0;
-  background: url(../img/intro-bg.jpg) center center no-repeat;
+  background: url(../img/corvette-background.jpg) center center no-repeat;
   background-color: #e5e5e5;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -216,7 +216,7 @@ a:focus,
   -o-background-size: cover;
 }
 .intro .overlay {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5); /* Increased opacity for better text contrast */
 }
 .intro h1 {
   font-family: "Raleway", sans-serif;
@@ -238,12 +238,43 @@ a:focus,
   line-height: 30px;
   margin: 0 auto;
   margin-bottom: 60px;
+  max-width: 600px; /* Limit text width for better readability */
 }
 header .intro-text {
-  padding-top: 350px;
-  padding-bottom: 200px;
+  padding-top: 250px;
+  padding-bottom: 150px;
   text-align: center;
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .intro h1 {
+    font-size: 50px; /* Scale down the title */
+  }
+  .intro p {
+    font-size: 18px; /* Scale down the paragraph text */
+    line-height: 24px;
+  }
+  header .intro-text {
+    padding-top: 150px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .intro h1 {
+    font-size: 40px; /* Further scale down for very small screens */
+  }
+  .intro p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  header .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+}
+
 /* Features Section */
 #features {
   background: #f6f6f6;
@@ -260,6 +291,43 @@ header .intro-text {
   background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
+#features .container {
+  max-width: 1200px; /* Limit container width */
+}
+#features .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the feature items */
+}
+#features .col-md-3 {
+  margin-bottom: 20px; /* Add spacing between items */
+}
+#features .col-xs-6 {
+  width: 100%; /* Ensure full width for small screens */
+  max-width: 300px; /* Limit the max width for items */
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #features .row {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+  }
+  #features .col-md-3 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  #features h2 {
+    font-size: 24px; /* Adjust section title size */
+  }
+  #features .col-xs-6 {
+    font-size: 14px; /* Scale down feature text */
+  }
+}
+
 /* About Section */
 #about {
   padding: 100px 0;
