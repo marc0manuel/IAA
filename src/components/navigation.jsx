@@ -36,11 +36,7 @@ export const Navigation = (props) => {
               <Link to="/appraisal">Get Your Appraisal</Link>
              
             </li>
-            <li>
-              <Link to="/#about" className="page-scroll">
-                About Us
-              </Link>
-            </li>
+            
             
           </ul>
         </div>

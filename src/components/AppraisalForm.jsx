@@ -24,7 +24,6 @@ export const AppraisalPage = (props) => {
           if (type === "setHeight") {
             setIframeHeight(`${height}px`);
           } else if (type === "scrollIntoView") {
-            // Detect iframe-triggered scrolling
             setIsIframeScroll(true);
 
             const iframe = document.querySelector("iframe");
@@ -33,7 +32,6 @@ export const AppraisalPage = (props) => {
               window.scrollTo({ top: iframeTop, behavior: "smooth" });
             }
 
-            // Reset iframe scroll detection after a short delay
             setTimeout(() => setIsIframeScroll(false), 300);
           }
         } catch (error) {
@@ -50,7 +48,6 @@ export const AppraisalPage = (props) => {
   }, [navHeight]);
 
   useEffect(() => {
-    // Allow normal scrolling unless triggered by the iframe
     const preventIframeScroll = (event) => {
       if (isIframeScroll) {
         event.preventDefault();
@@ -103,7 +100,9 @@ export const AppraisalPage = (props) => {
   return (
     <div
       style={{
-        backgroundColor: "#1e1e1e",
+        backgroundImage: "url('./carLogos.webp')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         minHeight: "100vh",
         paddingTop: `${navHeight}px`,
         display: "flex",
@@ -114,13 +113,14 @@ export const AppraisalPage = (props) => {
     >
       <div
         style={{
-          backgroundColor: "#fdf4e3",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
           color: "#000",
           width: "80%",
           maxWidth: "1200px",
           borderRadius: "10px",
           padding: "20px",
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+          width: window.innerWidth < 768 ? "100%" : "80%", // Full width on mobile
         }}
       >
         <div style={{ textAlign: "center" }}>
@@ -195,6 +195,7 @@ export const AppraisalPage = (props) => {
                 height: iframeHeight,
                 border: "none",
                 marginTop: "10px",
+                display: "block",
               }}
               title="Get Your Appraisal"
               allowTransparency="true"

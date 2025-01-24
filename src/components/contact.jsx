@@ -9,32 +9,30 @@ const initialState = {
 };
 export const Contact = (props) => {
   const [{ name, email, message }, setState] = useState(initialState);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
   const clearState = () => setState({ ...initialState });
-  
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, message);
-    
-    {/* replace below with your own Service ID, Template ID and Public Key from your EmailJS account */ }
-    
     emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_PUBLIC_KEY")
+      .sendForm("service_4ljn8lf", "template_7ti885o", e.target, "yIBdz3KpmsfoAQ-kC")
       .then(
         (result) => {
           console.log(result.text);
           clearState();
+          setIsSubmitted(true); // Set submission state to true
         },
         (error) => {
           console.log(error.text);
         }
       );
   };
+
   return (
     <div>
       <div id="contact">
@@ -48,54 +46,67 @@ export const Contact = (props) => {
                   get back to you as soon as possible.
                 </p>
               </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className="form-control"
-                        placeholder="Name"
-                        required
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
+              {/* Conditional rendering for success message */}
+              {isSubmitted ? (
+                <div className="success-message">
+                  <p>
+                    Your Email Inquiry has been sent, please allow 24-48 hours
+                    for our team to reply back!
+                  </p>
+                </div>
+              ) : (
+                <form name="sentMessage" validate onSubmit={handleSubmit}>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          className="form-control"
+                          placeholder="Name"
+                          required
+                          onChange={handleChange}
+                          value={name}
+                        />
+                        <p className="help-block text-danger"></p>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          className="form-control"
+                          placeholder="Email"
+                          required
+                          onChange={handleChange}
+                          value={email}
+                        />
+                        <p className="help-block text-danger"></p>
+                      </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="form-control"
-                        placeholder="Email"
-                        required
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
+                  <div className="form-group">
+                    <textarea
+                      name="message"
+                      id="message"
+                      className="form-control"
+                      rows="4"
+                      placeholder="Message"
+                      required
+                      onChange={handleChange}
+                      value={message}
+                    ></textarea>
+                    <p className="help-block text-danger"></p>
                   </div>
-                </div>
-                <div className="form-group">
-                  <textarea
-                    name="message"
-                    id="message"
-                    className="form-control"
-                    rows="4"
-                    placeholder="Message"
-                    required
-                    onChange={handleChange}
-                  ></textarea>
-                  <p className="help-block text-danger"></p>
-                </div>
-                <div id="success"></div>
-                <button type="submit" className="btn btn-custom btn-lg">
-                  Send Message
-                </button>
-              </form>
+                  <div id="success"></div>
+                  <button type="submit" className="btn btn-custom btn-lg">
+                    Send Message
+                  </button>
+                </form>
+              )}
             </div>
           </div>
           <div className="col-md-3 col-md-offset-1 contact-info">
@@ -151,14 +162,8 @@ export const Contact = (props) => {
         </div>
       </div>
       <div id="footer">
-        <div className="container text-center">
-          <p>
-            &copy; 2023 Issaaf Kattan React Land Page Template. Design by{" "}
-            <a href="http://www.templatewire.com" rel="nofollow">
-              TemplateWire
-            </a>
-          </p>
-        </div>
+        
+       
       </div>
     </div>
   );

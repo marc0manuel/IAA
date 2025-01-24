@@ -12,6 +12,7 @@ import { Testimonials } from "./components/testimonials";
 import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
 import { AppraisalPage } from "./components/AppraisalForm";
+import  AboutUs  from "./components/AboutUs";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
@@ -39,15 +40,17 @@ const App = () => {
                 <Header data={landingPageData.Header} />
                
                 <About data={landingPageData.About} />
-              <Services data={landingPageData.Services} />
-                <Gallery data={landingPageData.Gallery} />
-                <Testimonials data={landingPageData.Testimonials} />
-                <Team data={landingPageData.Team} />
+              
+              
+                
+              
+                
                 <Contact data={landingPageData.Contact} />
               </>
             }
           />
           <Route path="/appraisal" element={<AppraisalPage />} />
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
       </div>
     </Router>
