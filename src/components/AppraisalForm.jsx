@@ -7,6 +7,7 @@ export const AppraisalPage = (props) => {
   const [iframeHeight, setIframeHeight] = useState("1800px");
   const [navHeight, setNavHeight] = useState(0);
   const [isIframeScroll, setIsIframeScroll] = useState(false);
+  const [isManualEntry, setIsManualEntry] = useState(false); // New state for manual entry
 
   useEffect(() => {
     const nav = document.querySelector("nav");
@@ -25,16 +26,16 @@ export const AppraisalPage = (props) => {
             console.log("Detected setHeight message, scrolling to top");
             window.scrollTo({ top: 0, behavior: "instant" });
           }
-  
+
           // Existing functionality to handle JSON messages
           const data = JSON.parse(event.data);
           const { type, height, action } = data;
-  
+
           if (type === "formNavigation" && action === "next") {
             console.log("User Pressed Next");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }
-  
+
           if (type === "setHeight") {
             setIframeHeight(`${height}px`);
           } else if (type === "scrollIntoView") {
@@ -51,14 +52,13 @@ export const AppraisalPage = (props) => {
         }
       }
     };
-  
+
     window.addEventListener("message", handleIframeMessage);
-  
+
     return () => {
       window.removeEventListener("message", handleIframeMessage);
     };
   }, [navHeight]);
-  
 
   useEffect(() => {
     const preventIframeScroll = (event) => {
@@ -95,19 +95,21 @@ export const AppraisalPage = (props) => {
   };
 
   const handleConfirmVehicle = () => {
+    setIsManualEntry(false); // Not manual entry
     setShowForm(true);
   };
 
   const handleManualEntry = () => {
+    setIsManualEntry(true); // Set manual entry to true
     setShowForm(true);
   };
 
   const prepopulateUrl = () => {
-    if (vehicleData) {
+    if (vehicleData && !isManualEntry) {
       const { carYear, carMake, carModel } = vehicleData;
       return `https://form.jotform.com/250125180075245?vin=${vin}&carYear=${carYear}&carMake=${carMake}&carModel=${carModel}`;
     }
-    return "https://form.jotform.com/250125180075245";
+    return "https://form.jotform.com/250125180075245"; // No prepopulated data for manual entry
   };
 
   return (
