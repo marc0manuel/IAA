@@ -18,20 +18,32 @@ export const AppraisalPage = (props) => {
   useEffect(() => {
     const handleIframeMessage = (event) => {
       if (event.origin.includes("jotform")) {
+        console.log("Raw message:", event.data); // Log the raw message
         try {
-          const { type, height } = JSON.parse(event.data);
-
+          // Directly check if the message includes 'setHeight'
+          if (event.data.includes("setHeight")) {
+            console.log("Detected setHeight message, scrolling to top");
+            window.scrollTo({ top: 0, behavior: "instant" });
+          }
+  
+          // Existing functionality to handle JSON messages
+          const data = JSON.parse(event.data);
+          const { type, height, action } = data;
+  
+          if (type === "formNavigation" && action === "next") {
+            console.log("User Pressed Next");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+  
           if (type === "setHeight") {
             setIframeHeight(`${height}px`);
           } else if (type === "scrollIntoView") {
             setIsIframeScroll(true);
-
             const iframe = document.querySelector("iframe");
             if (iframe) {
               const iframeTop = iframe.getBoundingClientRect().top + window.scrollY - navHeight;
               window.scrollTo({ top: iframeTop, behavior: "smooth" });
             }
-
             setTimeout(() => setIsIframeScroll(false), 300);
           }
         } catch (error) {
@@ -39,13 +51,14 @@ export const AppraisalPage = (props) => {
         }
       }
     };
-
+  
     window.addEventListener("message", handleIframeMessage);
-
+  
     return () => {
       window.removeEventListener("message", handleIframeMessage);
     };
   }, [navHeight]);
+  
 
   useEffect(() => {
     const preventIframeScroll = (event) => {
