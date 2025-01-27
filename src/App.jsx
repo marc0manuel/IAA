@@ -38,7 +38,7 @@ const App = () => {
             element={
               <>
                 <Header data={landingPageData.Header} />
-               
+                
                 <About data={landingPageData.About} />
               
               
@@ -49,7 +49,7 @@ const App = () => {
               </>
             }
           />
-          <Route path="/appraisal" element={<AppraisalPage />} />
+          <Route path="/appraisal" component={<AppraisalPage />} />
           <Route path="/about-us" element={<AboutUs />} />
         </Routes>
       </div>
