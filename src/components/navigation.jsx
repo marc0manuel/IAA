@@ -19,7 +19,7 @@ export const Navigation = (props) => {
             <span className="icon-bar"></span>{" "}
           </button>
           <Link className="navbar-brand" to="/">
-            Instant Auto Appraisals
+            Instant Auto Appraisers
         </Link>
         </div>
 
