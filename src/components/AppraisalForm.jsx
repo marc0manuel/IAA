@@ -22,7 +22,7 @@ export const AppraisalPage = (props) => {
         console.log("Raw message:", event.data); // Log the raw message
         try {
           // Directly check if the message includes 'setHeight'
-          if (event.data.includes("setHeight")) {
+          if (event.data.includes("scrollIntoView")) {
             console.log("Detected setHeight message, scrolling to top");
             window.scrollTo({ top: 0, behavior: "instant" });
           }
